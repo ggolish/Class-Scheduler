@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> My Class Schedule App </title>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='style.css' type='text/css'>
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
+  <script src='script.js'></script>
+</head>
+<body>
+
+<!-- main user interface -->
+<div id='main' onclick='menuOpen(event);'>
+
+<!-- top section of toolbar -->   
+<ul class='tool-bar' id='lower-menu'>
+  <li class='drop'><a href='#' class='drop-btn' id='choose-schedule-btn'>Choose Schedule</a>
+    <div class='drop-menu' id='choose-schedule-menu'>
+      <a href='#' class='drop-menu-btn' id='add-schedule-btn'>Add schedule</a>
+    </div>
+  </li>
+  <li><a href='#' id='title'><strong>My Class Schedule</strong></a>
+  <li class='drop'><a href='#' class='drop-btn' id='schedule-display'> Schedule Display </a>
+  </li>
+</ul>
+
+<!-- unordered list will be styled as tool bar menu -->
+<ul class='tool-bar' id='menu'>
+    <li class="drop"> <a href='#' class='drop-btn' id="class-btn">Classes</a>
+    <div class="drop-menu" id='class-menu'>
+      <a href='#' class='drop-menu-btn' id='add-class-btn'> Add a class </a>
+    </div>
+  </li>
+  <li class="drop"> <a href='#' class='drop-btn' id='prof-btn'>Professors</a>
+    <div class="drop-menu" id='prof-menu'>
+      <a href='#' class='drop-menu-btn' id='add-prof-btn'> Add a professor </a>
+    </div>
+  </li>
+</ul>
+
+
+
+<!-- visual schedule of classes will be displayed in canvas --> 
+<canvas id="schedule"></canvas>
+
+<!-- A button for printing the canvas -->
+<table id='bottom-btns'>
+  <tr>
+    <td><input id='print-btn' type='button' value="Print Schedule" onclick='printSchedule();'>
+    <td><input id='default-btn' type='button' value="Set Default" onclick='setDefault();'>
+    <td><input id='hw-btn' type='button' value="Homework Tool" onclick='openHwTool();'>
+</table>
+
+</div>
+
+<!-- pop up menus for dropdown menu buttons --> 
+<!-- pop up menu for adding a schedule -->
+<div class='pop-up' id='add-schedule'>
+  <div class='inner-pop-up' id='add-schedule-inner'>
+    <h1> Add a schedule </h1>
+    <form onsubmit='addSchedule();' autocomplete='off'>
+      <table>
+        <tbody>
+          <tr><td class='label'>Schedule Name:<td><input type='text' id='schedule-name' required>
+          <tr><td><input type='submit' value='Add Schedule'><td><input type='reset' value='Clear'>
+          <tr><td colspan=2><input type='button' value='Cancel' onclick='closePopUps("add-schedule");'>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- A pop up menu for adding classes -->
+<div class='pop-up' id='add-class'>
+  <div class='inner-pop-up' id='add-class-inner'>
+    <h1> Add a Class </h1>
+    <!-- form submissions will be processed with JavaScript -->
+    <form onsubmit='addClass();' autocomplete='off'>
+      <table>
+        <tbody>
+          <tr><td colspan=2><h3>Information?</h3>
+          <tr><td class='label'>Course Title:<td ><input type='text' id='class-name' required>
+          <tr><td class='label'>Course ID:<td><input type='text' id='class-id' required>
+          <tr><td class='label'>Box Color:<td><input type='color' id='class-box-color' required>
+          <tr><td class='label'>Text Color:<td><input type='color' id='class-text-color' required>
+          <tr><td class='label'>Professor:<td><select id='class-prof' value=none>
+	    <option id='add-prof-alt' onclick='menuOpen(event);'> Add professor </option>
+          </select>
+        </tbody>
+          <tr><td colspan=2><h3>Where?</h3>
+          <tr><td  class='label'>Building:<td ><input type='text' id='class-building'>
+          <tr><td  class='label'>Room Number:<td ><input type='text' id='class-room'>
+        <!-- Time area can be expanded with JavaScript -->
+        <tbody id='class-times-area'>
+          <tr><td colspan=2><h3>When?</h3>
+          <tr><td class='label'>Days:<td><input class='class-days' type='text' id='class-days' 
+                      placeholder='e.g. MTWRF' pattern='[MTWRF]{1,5}' required>
+          <tr><td class='label'>From:&nbsp;&nbsp;&nbsp;<input class='class-start-times' type='time' id='class-start' 
+                  placeholder='e.g. 11:00 AM' pattern='[0-1]{0,1}[0-9]{1}:[0-9]{2} (AM|PM){1}' required>
+            <td class='label'>To:&nbsp;&nbsp;&nbsp;<input class='class-end-times' type='time' id='class-end' 
+                placeholder='e.g. 12:00 PM' pattern='[0-1]{0,1}[0-9]{1}:[0-9]{2} (AM|PM){1}'  required></tr>
+        </tbody>
+        <tbody>
+          <tr><td colspan=2><input style='margin-bottom: 15px;' type='button' value='Add time' onclick='addTime("class");'>
+          <tr><td><input type='submit' value='Add Class'><td><input type='reset' value='Clear' onclick='resetTimeArea("class");'>
+          <tr><td colspan=2><input type='button' value='Cancel' onclick='closePopUps("add-class");'>
+        </tbody>
+      </table>
+    </form>
+    <div style="clear:both"></div>
+  </div>
+</div>
+
+<!-- Pop up menu for adding professors -->
+<div class='pop-up' id='add-prof'>
+  <div class='inner-pop-up' id='add-prof-inner'>
+    <h1> Add a Professor </h1>
+    <form onsubmit='addProf();' autocomplete='off'>
+      <table>
+        <tbody>
+          <tr><td colspan=2><h3>Information?</h3>
+          <tr><td class='label'>Name:<td ><input type='text' id='prof-name' required>
+          <tr><td class='label'>Email:<td><input type='email' id='prof-email'>
+          <tr><td class='label'>Phone:<td><input type='tel' id='prof-tel'>
+        </tbody>
+        <tr><td colspan=2><h3>Office?</h3>
+          <tr><td  class='label'>Building:<td ><input type='text' id='prof-building'>
+          <tr><td  class='label'>Room Number:<td ><input type='text' id='prof-room'>
+        <tbody id='prof-times-area'>
+          <tr><td colspan=2><h3>Office Hours?</h3>
+          <tr><td class='label'>Days:<td><input type='text' class='prof-days' id='prof-days' placeholder='e.g. MTWRF' pattern='[MTWRF]{1,5}' >
+          <tr><td class='label'>From:&nbsp;&nbsp;&nbsp;<input class='prof-start-times' type='time' id='prof-start' placeholder='e.g. 11:00 AM' pattern='[0-1]{0,1}[0-9]{1}:[0-9]{2} (AM|PM){1}' >
+            <td class='label'>To:&nbsp;&nbsp;&nbsp;<input class='prof-end-times' type='time' id='prof-end' placeholder='e.g. 11:00 AM' pattern='[0-1]{0,1}[0-9]{1}:[0-9]{2} (AM|PM){1}' >
+        </tbody>
+        <tbody>
+          <tr><td colspan=2><input style='margin-bottom: 15px;' type='button' value='Add time' onclick='addTime("prof");'>
+          <tr><td><input type='submit' value='Add Professor'><td><input type='reset' value='Clear' onclick='resetTimeArea("prof");'>
+          <tr><td colspan=2><input type='button' value='Cancel' onclick='closePopUps("add-prof");'>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div id='hw-tool'>
+</div>
+
+</body>
+</html>

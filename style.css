@@ -1,0 +1,332 @@
+
+    div.pop-up {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      box-shadow: 0px 0px 40px 0px #005;
+      border-radius: 20px;
+    }
+
+    div.inner-pop-up h1 {
+      text-align: center;
+    }
+
+    div.inner-pop-up {
+      float: left;
+      margin: 25px;
+      min-width: 750px;
+      background-color: blue;
+      color: white;
+      text-shadow: 5px 5px 10px black;
+    }
+
+    div.inner-pop-up table {
+      margin-left: auto;
+      margin-right: auto;
+      color: white;
+      font-size: 20pt;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-spacing: 5px;
+    }
+
+    div.inner-pop-up h3 {
+      font-size: 24pt;
+      text-decoration: underline;
+      margin: 10px 10px;
+    }
+
+    div.inner-pop-up h1 {
+      text-decoration: underline;
+    }
+
+    div.inner-pop-up td {
+      text-align: center;
+      width: 250px;
+      margin: 5px 5px;
+    }
+
+    div.inner-pop-up input, div.inner-pop-up select, div.inner-pop-up button, div.inner-pop-up textarea {
+      background-color: transparent;
+      border: 2px ridge white;
+      width: 250px;
+      color: white;
+      font-size: 20pt;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      text-shadow: 5px 5px 10px black;
+    }
+    
+    div.inner-pop-up textarea {
+      width: 500px;
+      height: 500px;
+      text-align: left;
+    }
+
+    table td.label {
+      text-align: left;
+    }
+
+    .blur-on {
+      pointer-events: none;
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(5px);
+    }
+    
+    .blur-off {
+      pointer-events: auto;
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+      filter: blur(0px);
+    }
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20pt;
+    }
+
+    div#main {
+      display: table;
+      margin: 0 auto;
+      box-shadow: 0px 10px 40px 0px #005;
+      padding: 20px;
+      border-radius: 20px;
+      background-color: white;
+    }
+
+    ul.tool-bar {
+      border: 2.5px solid #444;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #444;
+    }
+
+    .tool-bar li {
+      float: left;
+    }
+    
+    .tool-bar li a{
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 540px;
+      padding: 15px 0px;
+      text-align: center;
+      background-color: #444;
+      text-decoration: none;  
+      color: white;
+      cursor: default;
+    }
+    
+    #menu .drop a {
+      width: 540px;
+    }
+
+    .drop a:hover, .drop a:active {
+        background-color: blue;
+    }
+
+    #schedule-display:active, #schedule-display:hover {
+      background-color: #444;
+    }
+
+    .tool-bar .drop-menu {
+      display: none; 
+      position: absolute;
+      width: 400px;
+    }
+
+    .tool-bar .drop-menu a {
+      display: inline-block;
+      float: left; 
+      width: 270px;
+      background-color: lightgray;
+      color: black;
+      font-size: 18pt;
+      text-decoration: none;
+      border-bottom: 1px groove #222;
+    }
+
+    .tool-bar .drop-menu a:hover, .tool-bar .drop-menu a:active {
+      background-color: gray;
+    }
+
+    #title {
+      background-color: blue;
+      border: 2px ridge blue;
+      color: white;
+      width: 540px;
+      font-size: 28pt;
+    }
+
+    #lower-menu a.drop-btn {
+      text-decoration: underline;
+      width: 268px;
+    }
+    
+    canvas#schedule {
+      margin-top: 10px;
+    }
+
+    #bottom-btns {
+      display: none;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    
+    #bottom-btns input {
+      border: none;
+      background-color: #444;
+      border-radius: 10px;
+      text-shadow: none;
+      width: 250px;
+      color: white;
+      font-size: 20pt;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    
+    #hw-tool {
+      display: none;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    
+    input.hw-first-btn {
+      margin-left: 20px;
+    }
+    
+    div.class-div {
+      width: 900px;
+      background-image: linear-gradient(#DDD, #FFF);
+      border: 1px solid lightgray;
+      margin: 20px;
+    }
+    
+    div.class-div table {
+      border-bottom: 1px inset gray; 
+      margin: 10px;
+    }
+    
+    div.class-div:hover, div.class-div:active {
+      border: 1px solid lightblue;
+      box-shadow: 0px 0px 20px 5px lightblue;
+      cursor: default;
+    }
+    
+    div.class-div div.color-div {
+      width: 900px;
+      height: 20px;
+      border: none;
+    }
+    
+    div.class-div h5 {
+      margin: 5px 5px;
+      text-decoration: underline;
+    }
+    
+    div.class-div td {
+      width: 400px;
+      padding-bottom: 10px;
+    }
+
+    div.class-div td.hw-class-title-box {
+      width: 800px;
+      padding-bottom: 10px;
+    }
+    
+    div.class-div td.hw-add-btn-box {
+      width: 100px;
+      padding-bottom: 10px;
+    }
+    
+    div.class-div td:last-child {
+      text-align: right;
+    }
+
+    div.lower-div {
+      color: #AAA;
+    }
+
+    div.hw-div {
+      font-size: 18pt;
+    }
+
+    div.hw-div a:link {
+      text-decoration: none;
+      color: gray;
+      font-weight: bold;
+    }
+
+    div.hw-div a:visited {
+      color: gray;
+    }
+    
+    div.hw-div table {
+      border-collapse: collapse;
+      border-bottom: 1px groove lightgray;
+      margin: 10px 10px 10px 10px;
+    }
+    
+    div.hw-div input[type='text'] {
+      width: 330px;
+      margin-bottom: 5px;
+    }
+
+    div.hw-div textarea {
+      width: 872px;
+      height: 200px;
+      margin-bottom: 5px;
+    }
+    
+    div.hw-div td.date {
+      width: 150px;
+      font-weight: bold;
+    }
+    
+    div.hw-div td.notes {
+      text-align: justify;
+      color: gray;
+      padding: 0px 50px 10px 50px;
+      font-size: 16pt;
+    }
+   
+    div.lower-div td.notes {
+      display: none;
+    }
+    
+    div.lower-div .edbtn {
+      display: none;
+    }
+
+    div.hw-div ul {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    div.hw-div td.name {
+      width: 520px;
+      text-align: left;
+    }
+    
+    div.hw-div td.check {
+      width: 30px; 
+    }
+    
+    div.hw-div td.remove {
+      width: 200px;
+    }
